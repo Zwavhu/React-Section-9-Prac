@@ -1,11 +1,14 @@
 import Sidebar from "./components/Sidebar/Sidebar.jsx";
+import { createPortal } from 'react-dom'
+import LandingPage from "./components/Landing/LandingPage.jsx";
 
 function App() {
   return (
     <>
         <div className="flex">
+            {/*{createPortal(<Sidebar/>, document.body)}*/}
             <Sidebar />
-            <h1 className="w-[70%] my-8 text-center font-bold">Hello World</h1>
+            <LandingPage />
         </div>
 
     </>
