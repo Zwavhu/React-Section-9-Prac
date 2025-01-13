@@ -1,6 +1,34 @@
 import CreateProjectInput from "../CreateProjectInput/CreateProjectInput.jsx";
+import {useRef, useState} from "react";
 
-function CreateProjectPage({handleSave, handleCancel}) {
+function CreateProjectPage({onAddProject}) {
+    const [saveProject, setSaveProject] = useState(false);
+
+    const titleRef = useRef();
+    const descriptionRef = useRef();
+    const dateRef = useRef();
+
+
+    function handleSave(){
+        // setSaveProject(true);
+        const title = titleRef.current.value;
+        const description = descriptionRef.current.value;
+        const date = dateRef.current.value;
+        console.log('Refs', titleRef.current);
+
+        onAddProject({
+            title: title,
+            description: description,
+            date: date,
+        })
+
+    }
+
+
+
+    function handleCancel(){
+
+    }
 
     return (
         <>
@@ -10,9 +38,9 @@ function CreateProjectPage({handleSave, handleCancel}) {
                     <button onClick={handleSave} className="py-1.5 px-3.5 text-white bg-blue-500 rounded hover:text-gray-500 hover:bg-blue-400">Save</button>
                 </div>
 
-                <CreateProjectInput label="Title" inputType="text" />
-                <CreateProjectInput label="Description" inputType="textarea" />
-                <CreateProjectInput label="Date" inputType="date" />
+                <CreateProjectInput ref={titleRef} label="Title" inputType="text" />
+                <CreateProjectInput ref={descriptionRef} label="Description" inputType="textarea" />
+                <CreateProjectInput ref={dateRef} label="Date" inputType="date" />
             </div>
 
         </>
