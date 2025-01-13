@@ -2,7 +2,6 @@ import CreateProjectInput from "../CreateProjectInput/CreateProjectInput.jsx";
 
 function CreateProjectPage({handleSave, handleCancel}) {
 
-
     return (
         <>
             <div className="w-[70%] flex flex-col p-16 mt-32 gap-5">
