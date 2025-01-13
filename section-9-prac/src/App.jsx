@@ -1,12 +1,9 @@
 import Sidebar from "./components/Sidebar/Sidebar.jsx";
-import { createPortal } from 'react-dom'
 import LandingPage from "./components/Landing/LandingPage.jsx";
 import {useState} from "react";
 
 function App() {
     const [showCreatePage, setShowCreatePage] = useState(false);
-    console.log('Show Create---',showCreatePage);
-
     function handleCreateClick() {
         setShowCreatePage(true);
     }
@@ -14,8 +11,8 @@ function App() {
   return (
     <>
         <div className="flex">
-            <Sidebar handleCreateClick={handleCreateClick} showCreatePage={showCreatePage} />
-            <LandingPage handleCreateClick={handleCreateClick} showCreatePage={showCreatePage} />
+            <Sidebar handleCreateClick={handleCreateClick} />
+            <LandingPage handleCreateClick={handleCreateClick} />
         </div>
 
     </>
