@@ -6,7 +6,7 @@ function Sidebar({handleCreateClick}) {
             <div className=" flex flex-col">
                 <h2 className="text-2xl font-bold text-white uppercase">Your Projects</h2>
                 <div className="py-8">
-                    <CreateButton handleCreateClick={handleCreateClick} buttonType='sidebar'> + Add Project </CreateButton>
+                    <CreateButton handleCreateClick={handleCreateClick}> + Add Project </CreateButton>
                 </div>
             </div>
         </aside>

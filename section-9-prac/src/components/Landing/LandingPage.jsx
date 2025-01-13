@@ -8,7 +8,7 @@ function LandingPage({handleCreateClick}) {
             <img className="object-contain w-16 h-16" src="logo.png" alt="logo"/>
             <h3 className=" text-2xl text-gray-600 font-bold"> No Projects Selected</h3>
             <p className="text-gray-500"> Select a project or get started with a new one</p>
-            <CreateButton handleCreateClick={handleCreateClick} buttonType={type}> Create new project </CreateButton>
+            <CreateButton handleCreateClick={handleCreateClick}> Create new project </CreateButton>
         </div>
     )
 }
