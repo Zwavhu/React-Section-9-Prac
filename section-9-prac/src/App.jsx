@@ -7,26 +7,69 @@ function App() {
     const [showCreatePage, setShowCreatePage] = useState(false);
     const [saveProject, setSaveProject] = useState(false);
     const [cancelSaveProject, setCancelSaveProject] = useState(false);
-    console.log('creee',saveProject);
-    console.log('creee',cancelSaveProject);
 
-    function handleCreateClick() {
-        setShowCreatePage(true);
+    const [projectState, setProjectState] = useState({
+        selectedProjectId: undefined,
+        projects: [],
+    })
+
+    function handleStartAddProject() {
+        setProjectState(prevState => {
+            return {
+                ...prevState,
+                selectedProjectId: null,
+
+            };
+        })
     }
 
-    function handleSave(){
-        setSaveProject(true);
+
+    function handleAddProject(projectData) {
+        setProjectState(prevState => {
+            const newProject = {
+                ...projectData,
+                id: Math.random()
+            }
+
+            return {
+                ...prevState,
+                projects: [...prevState.projects, newProject],
+            }
+        })
     }
 
-    function handleCancel(){
-        setCancelSaveProject(true);
+    // function handleSave(){
+    //     setSaveProject(true);
+    // }
+    //
+    // function handleCancel(){
+    //      setProjectState(prevState => {
+    //         return {
+    //             ...prevState,
+    //             selectedProjectId: undefined,
+    //
+    //         };
+    //     })
+    // }
+
+    console.log('State---', projectState)
+
+    let content;
+
+    if (projectState.selectedProjectId === null){
+        content = <CreateProjectPage onAddProject={handleAddProject} />;
+    } else if (projectState.selectedProjectId === undefined) {
+        content = <LandingPage handleCreateClick={handleStartAddProject} />
     }
 
   return (
     <>
         <div className="flex">
-            <Sidebar handleCreateClick={handleCreateClick} />
-            {showCreatePage ? <CreateProjectPage handleSave={handleSave} handleCancel={handleCancel} /> : !showCreatePage || cancelSaveProject ? <LandingPage handleCreateClick={handleCreateClick} /> : null}
+            <Sidebar handleCreateClick={handleStartAddProject} />
+            {content}
+            {/*<CreateProjectPage handleSave={handleSave} handleCancel={handleCancel} />*/}
+            {/*<LandingPage handleCreateClick={handleStartAddProject} />*/}
+            {/*{showCreatePage ? <CreateProjectPage handleSave={handleSave} handleCancel={handleCancel} /> : !showCreatePage || cancelSaveProject ? <LandingPage handleCreateClick={handleStartAddProject} /> : null}*/}
         </div>
 
     </>
