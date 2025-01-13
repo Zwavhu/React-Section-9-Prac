@@ -65,7 +65,7 @@ function App() {
   return (
     <>
         <div className="flex">
-            <Sidebar handleCreateClick={handleStartAddProject} />
+            <Sidebar handleCreateClick={handleStartAddProject} projects={projectState.projects} />
             {content}
             {/*<CreateProjectPage handleSave={handleSave} handleCancel={handleCancel} />*/}
             {/*<LandingPage handleCreateClick={handleStartAddProject} />*/}
