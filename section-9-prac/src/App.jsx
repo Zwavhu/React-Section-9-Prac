@@ -33,6 +33,7 @@ function App() {
 
             return {
                 ...prevState,
+                selectedProjectId: undefined,
                 projects: [...prevState.projects, newProject],
             }
         })
@@ -41,23 +42,23 @@ function App() {
     // function handleSave(){
     //     setSaveProject(true);
     // }
-    //
-    // function handleCancel(){
-    //      setProjectState(prevState => {
-    //         return {
-    //             ...prevState,
-    //             selectedProjectId: undefined,
-    //
-    //         };
-    //     })
-    // }
+
+    function handleCancel(){
+         setProjectState(prevState => {
+            return {
+                ...prevState,
+                selectedProjectId: undefined,
+
+            };
+        })
+    }
 
     console.log('State---', projectState)
 
     let content;
 
     if (projectState.selectedProjectId === null){
-        content = <CreateProjectPage onAddProject={handleAddProject} />;
+        content = <CreateProjectPage onCancel={handleCancel} onAddProject={handleAddProject} />;
     } else if (projectState.selectedProjectId === undefined) {
         content = <LandingPage handleCreateClick={handleStartAddProject} />
     }

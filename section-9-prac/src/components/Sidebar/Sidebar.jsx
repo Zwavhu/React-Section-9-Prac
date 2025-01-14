@@ -12,9 +12,9 @@ function Sidebar({projects, handleCreateClick}) {
                 <div className="py-8">
                     <CreateButton handleCreateClick={handleCreateClick}> + Add Project </CreateButton>
                 </div>
-                {projects.map((project, id) => {
+                {projects.map((project) => {
                     return (
-                        <ul key={id} onClick={ (id) => handleSelectProject(id)} className="p-2 hover:bg-blue-300 text-gray-200 hover:text-gray-300 rounded-md">
+                        <ul key={project.id} className="p-2 hover:bg-blue-300 text-gray-200 hover:text-gray-300 rounded-md">
                             {project.title}
                         </ul>
                     )
